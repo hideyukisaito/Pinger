@@ -2,17 +2,73 @@
 
 #include "ofMain.h"
 #include "ofxOsc.h"
+#include "ofxTimer.h"
 #include "ofxXmlSettings.h"
 #include "ofxBundleResources.h"
 
+class ThreadedOSCReceiver : public ofThread
+{
+public:
+    
+    ~ThreadedOSCReceiver()
+    {
+        if (isThreadRunning()) stopThread();
+        ofLogNotice() << "ThreadedOSCReceiver stoped";
+    }
+    
+    void setup(int port)
+    {
+        receiver.setup(port);
+        startThread();
+    }
+    
+    void threadedFunction()
+    {
+        while (isThreadRunning())
+        {
+            if (receiver.hasWaitingMessages())
+            {
+                if (receiver.getNextMessage(&msg) && lock())
+                {
+                    ofxOscMessage m = msg;
+                    ofNotifyEvent(messageReceived, msg, this);
+                    unlock();
+                }
+                
+            }
+            
+            ofSleepMillis(10);
+        }
+    }
+    
+    ofEvent<ofxOscMessage> messageReceived;
+    
+private:
+    
+    ofxOscReceiver receiver;
+    ofxOscMessage msg;
+    
+};
+
+
+enum AppStatus
+{
+    APP_ALIVE = 0,
+    APP_DEAD = 1,
+    APP_UNKNOWN = 2,
+    APP_REBOOTING = 3,
+};
+
+
 class ofApp : public ofBaseApp
 {
-
+    
 public:
+    
     void setup();
     void update();
     void draw();
-
+    
     void keyPressed(int key);
     void keyReleased(int key);
     void mouseMoved(int x, int y );
@@ -23,20 +79,29 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    ofxOscSender mOscSender;
-    ofxOscReceiver mOscReceiver;
+    ofxXmlSettings setting;
     
-    string mHost;
-    int mSenderPort, mReceiverPort;
+    ThreadedOSCReceiver receiver;
+    ofxOscSender sender;
+    ofxTimer timer;
     
-    string mAppName;
-    string mAppPath;
+    unsigned long long lastPingTime;
+    string lastPingTimestamp;
     
-    int mPingIntervalMillis;
-    int mWaitTimeMillis;
+    AppStatus status;
+    string appName;
+    string appPath;
+    bool bStartWatching;
+    string logString;
     
-    unsigned long long mLastSentTime, mLastReceivedTime;
-    string mStatusMsg;
-    ofColor mStatColor;
-    bool bRebooting;
+    string remotePingAddr, incomingPingAddr;
+    string bootAddr;
+    int rebootInterval;
+    int limitTimeMillis;
+    
+    void ping();
+    
+    void onMessageReceived(ofxOscMessage &msg);
+    void onTimerReached(ofEventArgs &e);
+    
 };

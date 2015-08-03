@@ -23,6 +23,7 @@
 		975AA6711B6CFE95009888A8 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 975AA66D1B6CFE95009888A8 /* tinyxmlerror.cpp */; };
 		975AA6721B6CFE95009888A8 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 975AA66E1B6CFE95009888A8 /* tinyxmlparser.cpp */; };
 		975AA6771B6CFEA3009888A8 /* ofxBundleResources.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 975AA6751B6CFEA3009888A8 /* ofxBundleResources.cpp */; };
+		975AA6BC1B6F3353009888A8 /* ofxTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 975AA6BA1B6F3353009888A8 /* ofxTimer.cpp */; };
 		A29D8C96AE042ECEAA1BD4F3 /* NetworkingUtilsWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B1FAD3F30C8065C396ACB /* NetworkingUtilsWin.cpp */; };
 		ADE367465D2A8EBAD4C7A8D9 /* IpEndpointName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADD194746185E2DA11468377 /* IpEndpointName.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -105,6 +106,8 @@
 		975AA66E1B6CFE95009888A8 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		975AA6751B6CFEA3009888A8 /* ofxBundleResources.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBundleResources.cpp; sourceTree = "<group>"; };
 		975AA6761B6CFEA3009888A8 /* ofxBundleResources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxBundleResources.h; sourceTree = "<group>"; };
+		975AA6BA1B6F3353009888A8 /* ofxTimer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTimer.cpp; sourceTree = "<group>"; };
+		975AA6BB1B6F3353009888A8 /* ofxTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxTimer.h; sourceTree = "<group>"; };
 		9BF3AA0D4FAA89D0F8A0E545 /* OscReceivedElements.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OscReceivedElements.cpp; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.cpp; sourceTree = SOURCE_ROOT; };
 		9F7986DC4EB05E75FCE2C777 /* ofxOscSender.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOscSender.h; path = ../../../addons/ofxOsc/src/ofxOscSender.h; sourceTree = SOURCE_ROOT; };
 		A2AAA8CA403479E6FCDF920E /* OscHostEndianness.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OscHostEndianness.h; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscHostEndianness.h; sourceTree = SOURCE_ROOT; };
@@ -265,6 +268,24 @@
 			path = ../../../addons/ofxBundleResources/src;
 			sourceTree = "<group>";
 		};
+		975AA6B81B6F3353009888A8 /* ofxTimer */ = {
+			isa = PBXGroup;
+			children = (
+				975AA6B91B6F3353009888A8 /* src */,
+			);
+			name = ofxTimer;
+			sourceTree = "<group>";
+		};
+		975AA6B91B6F3353009888A8 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				975AA6BA1B6F3353009888A8 /* ofxTimer.cpp */,
+				975AA6BB1B6F3353009888A8 /* ofxTimer.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxTimer/src;
+			sourceTree = "<group>";
+		};
 		BA6760AC87647DD61A92BD41 /* win32 */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +301,7 @@
 				E6053AB7FEC63D5F83825B88 /* ofxOsc */,
 				975AA6661B6CFE95009888A8 /* ofxXmlSettings */,
 				975AA6731B6CFEA3009888A8 /* ofxBundleResources */,
+				975AA6B81B6F3353009888A8 /* ofxTimer */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -516,6 +538,7 @@
 				A29D8C96AE042ECEAA1BD4F3 /* NetworkingUtilsWin.cpp in Sources */,
 				28090DEB5109115003E8F1C5 /* UdpSocketWin.cpp in Sources */,
 				62545D179C94265CA1389D4A /* OscOutboundPacketStream.cpp in Sources */,
+				975AA6BC1B6F3353009888A8 /* ofxTimer.cpp in Sources */,
 				975AA6771B6CFEA3009888A8 /* ofxBundleResources.cpp in Sources */,
 				C4782ECC372420ACE0615B74 /* OscPrintReceivedElements.cpp in Sources */,
 				975AA66F1B6CFE95009888A8 /* ofxXmlSettings.cpp in Sources */,

@@ -1,0 +1,31 @@
+<settings>
+  <general>
+    <osc>
+      <remote>
+        <host>localhost</host>
+        <port>9337</port>
+      </remote>
+      <incoming>
+        <port>13373</port>
+      </incoming>
+      <ping>
+        <interval>2000</interval>
+        <limit_time>5000</limit_time>
+        <address>
+        <remote>/server/ping</remote>
+        <incoming>/client/ping</incoming>
+        </address>
+      </ping>
+      <boot>
+        <address>/client/boot</address>
+      </boot>
+    </osc>
+  </general>
+  <target>
+    <name>APP NAME HERE</name>
+    <path>APP PATH HERE</path>
+    <reboot>
+      <wait_interval>10000</wait_interval>
+    </reboot>
+  </target>
+</settings>
